@@ -45,16 +45,6 @@ void show_world(char init[INTEGER][INTEGER], int ROW, int COL){
 	}
 }
 
-
-void start_gol(char world[INTEGER][INTEGER]){
-	for(int i=0; i<INTEGER; i++){
-		for(int j=0; j<INTEGER; j++){
-			printf("%c ", world[i][j]);
-		}
-		printf("\n");
-	}	
-}
-
 void scan_neighbours(char world[INTEGER][INTEGER]){
 	int offset_row[8] = {-1,-1,-1, 0, 0, 1, 1, 1};
 	int offset_col[8] = {-1, 0, 1,-1, 1,-1, 0, 1};
