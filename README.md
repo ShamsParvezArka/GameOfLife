@@ -2,7 +2,7 @@
 Conway's Game of Life implementation in pure C
 
 # Usage
-1. A,S,D,F to move
+1. A,S,D,W to move
 2. 'Space' to spon life
 3. 'X' to start GameOfLife
 
