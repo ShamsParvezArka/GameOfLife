@@ -1,4 +1,5 @@
-//GAME OF LIFE
+//Conway's Game of Life implimented in pure C
+//Author: Shams Parvez Arka<parvez6826@gmail.com>
 
 #include <stdio.h>
 #include <stdlib.h>
