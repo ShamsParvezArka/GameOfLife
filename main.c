@@ -1,4 +1,4 @@
-//Conway's Game of Life implimented in pure C
+//Conway's Game of Life implemented in pure C
 //Author: Shams Parvez Arka<parvez6826@gmail.com>
 
 #include <stdio.h>
@@ -95,9 +95,9 @@ int main()
 	int ROW, COL;
 	ROW = COL = center;
 	show_world(world.init, ROW, COL);
-	int boolean = 0;
+	bool boolean = true;
 
-	while(boolean != 1){
+	while(boolean != false){
 		char input; 
 		input = getchar();
 		switch(input){
@@ -128,7 +128,7 @@ int main()
 				show_world(world.init, ROW, COL);
 				break;
 			case 'x':
-				boolean = 1;
+				boolean = false;
 			default:
 				continue;
 		}
