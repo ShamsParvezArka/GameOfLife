@@ -102,32 +102,38 @@ int main()
 		input = getchar();
 		switch(input){
 			case 'w':
-				system("clear");
+				printf("\033[%dA\b", 1 * INTEGER);
 				ROW -= 1;
 				show_world(world.init, ROW, COL);
+				printf("\033[2K");
 				break;
 			case 's':
-				system("clear");
+				printf("\033[%dA\b", 1 * INTEGER);
 				ROW += 1;
 				show_world(world.init, ROW, COL);
+				printf("\033[2K");
 				break;
 			case 'a':
-				system("clear");
+				printf("\033[%dA\b", 1 * INTEGER);
 				COL -= 1;
 				show_world(world.init, ROW, COL);
+				printf("\033[2K");
 				break;
 			case 'd':
-				system("clear");
+				printf("\033[%dA\b", 1 * INTEGER);
 				COL += 1;
 				show_world(world.init, ROW, COL);
+				printf("\033[2K");
 				break;
 			case ' ':
-				system("clear");
+				printf("\033[%dA\b", 1 * INTEGER);
 				world.init[ROW][COL] = '#';
 				world.snaped[ROW][COL] = '#';
 				show_world(world.init, ROW, COL);
+				printf("\033[2K");
 				break;
 			case 'x':
+				printf("\033[2K");
 				boolean = false;
 			default:
 				continue;
@@ -136,9 +142,9 @@ int main()
 	enable_canonical();
 
 	while(true){
-			system("clear");
-			scan_neighbours(world.snaped);
-			sleep(0.900);
+		printf("\033[%dA\b", 1 * INTEGER);
+		scan_neighbours(world.snaped);
+		sleep(1);
 	}
 
 	return 0;
