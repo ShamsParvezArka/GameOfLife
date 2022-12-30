@@ -99,16 +99,11 @@ int main() {
 		}
 		else if (IsKeyDown(KEY_ENTER)) {
 			while (true) {
-				if (IsKeyDown(KEY_ESCAPE)) {
-					return 0;
-				}
-				else {
-					BeginDrawing();
-					ClearBackground(RAYWHITE);
-					draw_cell();
-					scan_neighbours(field);
-					EndDrawing();
-				}
+				BeginDrawing();
+				ClearBackground(RAYWHITE);
+				draw_cell();
+				scan_neighbours(field);
+				EndDrawing();
 			}
 		}
 
