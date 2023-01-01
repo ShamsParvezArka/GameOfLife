@@ -127,7 +127,7 @@ int main() {
 		}
 		else if (IsKeyDown(KEY_ENTER)) {
 			long int x = 1;
-			while (true) {
+			while (!IsKeyDown(KEY_ESCAPE)) {
 				BeginDrawing();
 				ClearBackground(RAYWHITE);
 				draw_cell();
