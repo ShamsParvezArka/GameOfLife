@@ -145,7 +145,6 @@ int main()
 	while(true){
 		printf("\033[%dA\b", 1 * INTEGER);
 		scan_neighbours(world.snaped);
-		sleep(1);
 	}
 
 	return 0;

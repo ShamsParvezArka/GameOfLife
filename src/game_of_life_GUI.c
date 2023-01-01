@@ -29,10 +29,10 @@ void draw_cell() {
 	}
 }
 
-void draw_block(int field[ROW][COL]) {
+void draw_block(int generation[ROW][COL]) {
 	for (int i = 0; i < COL; i++) {
 		for (int j = 0; j < ROW; j++) {
-			if (field[i][j] == true) {
+			if (generation[i][j] == true) {
 				DrawRectangle(
 						cell_height * i, 
 						cell_height * j, 
@@ -44,7 +44,7 @@ void draw_block(int field[ROW][COL]) {
 	}
 }
 
-void scan_neighbours(int field[ROW][COL]) {
+void scan_neighbours(int generation[ROW][COL], int next_generation[ROW][COL]) {
 	for (int i = 0; i < ROW; i++) {
 		for (int j = 0; j < COL; j++) {
 			int alive = 0;
@@ -52,29 +52,57 @@ void scan_neighbours(int field[ROW][COL]) {
 				if (((i - offset_row[k]) < 0) || ((j - offset_row[k] < 0))) {
 					continue;
 				}
-				else if (field[i - offset_row[k]][j - offset_col[k]] == 1) {
+				else if (generation[i - offset_row[k]][j - offset_col[k]] == 1) {
 					alive++;
 				}
 			}
-			if ((field[i][j] == 1) && (alive == 2 || alive == 3)) {
-				field[i][j] = 1;
+			if ((generation[i][j] == 1) && (alive == 2 || alive == 3)) {
+				next_generation[i][j] = 1;
 			}
-			else if((field[i][j] == 0) && (alive == 3)) {
-				field[i][j] = 1;
+			else if ((generation[i][j] == 0) && (alive ==3)) {
+				next_generation[i][j] = 1;
 			}
 			else {
-				field[i][j] = 0;
+				next_generation[i][j] = 0;
 			}
-			draw_block(field);
+			draw_block(next_generation);
+		}
+	}
+}
+
+void scan_neighbours_next_generation(int generation[ROW][COL], int next_generation[ROW][COL]) {
+	for (int i = 0; i < ROW; i++) {
+		for (int j = 0; j < COL; j++) {
+			int alive = 0;
+			for (int k = 0; k < 8; k++) {
+				if (((i - offset_row[k]) < 0) || ((j - offset_row[k] < 0))) {
+					continue;
+				}
+				else if (next_generation[i - offset_row[k]][j - offset_col[k]] == 1) {
+					alive++;
+				}
+			}
+			if ((next_generation[i][j] == 1) && (alive == 2 || alive == 3)) {
+				generation[i][j] = 1;
+			}
+			else if ((next_generation[i][j] == 0) && (alive ==3)) {
+				generation[i][j] = 1;
+			}
+			else {
+				generation[i][j] = 0;
+			}
+			draw_block(generation);
 		}
 	}
 }
 
 int main() {
-	int field[ROW][COL];
+	int generation[ROW][COL];
+	int next_generation[ROW][COL];
 	for (int i = 0; i < ROW; i++) {
 		for (int j = 0; j < COL; j++) {
-			field[i][j] = 0;
+			generation[i][j] = 0;
+			next_generation[i][j] = 0;
 		}
 	}
 
@@ -89,28 +117,35 @@ int main() {
 			cursor_position = GetMousePosition();
 			position_x = cursor_position.x / cell_width; 
 			position_y = cursor_position.y / cell_height; 
-			field[position_x][position_y] = 1;
+			generation[position_x][position_y] = 1;
 		}
 		else if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
 			cursor_position = GetMousePosition();
 			position_x = cursor_position.x / cell_width; 
 			position_y = cursor_position.y / cell_height; 
-			field[position_x][position_y] = 0;
+			generation[position_x][position_y] = 0;
 		}
 		else if (IsKeyDown(KEY_ENTER)) {
+			long int x = 1;
 			while (true) {
 				BeginDrawing();
 				ClearBackground(RAYWHITE);
 				draw_cell();
-				scan_neighbours(field);
+				if (x % 2 != 0) {
+					scan_neighbours(generation, next_generation);
+				}
+				else {
+					scan_neighbours_next_generation(generation, next_generation);
+				}
 				EndDrawing();
+				x++;
 			}
 		}
 
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
 		draw_cell();
-		draw_block(field);
+		draw_block(generation);
 		EndDrawing();
 	}
 }
