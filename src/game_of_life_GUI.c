@@ -148,4 +148,6 @@ int main() {
 		draw_block(generation);
 		EndDrawing();
 	}
+
+	CloseWindow();
 }
