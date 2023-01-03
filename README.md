@@ -11,7 +11,7 @@ Graphics library: <a href="https://raylib.com"><b>raylib</b></a>
     ./bin/gol       #to run in cli mode
     ./bin/raygol    #to run in gui mode
 
-<img src="https://user-images.githubusercontent.com/38325426/210379972-81ab5e32-9e79-4d0e-95e5-e93869648e82.gif" align="center">
-
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/38325426/210379972-81ab5e32-9e79-4d0e-95e5-e93869648e82.gif)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/38325426/210379972-81ab5e32-9e79-4d0e-95e5-e93869648e82.gif">
+</p>
 
