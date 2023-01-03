@@ -1,10 +1,7 @@
-# GameOfLife
-Conway's Game of Life implementation in pure C
+<h1 align="center">Game of Life</h1>
 
-# Usage
-1. A,S,D,W to move
-2. 'Space' to spon life
-3. 'X' to start GameOfLife
+### Pre-requirements
+Compiler: <a href="https://gcc.gnu.org/"><br>gcc</br></a> <br>
+Graphics library: <a href="https://raylib.com"><br>raylib</br></a>
 
-# Demo:
-![record_000002](https://user-images.githubusercontent.com/38325426/186443059-099495d5-64ad-4390-b317-5c5cb2a549fe.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/38325426/210379972-81ab5e32-9e79-4d0e-95e5-e93869648e82.gif)
