@@ -113,13 +113,13 @@ int main() {
 	int position_x, position_y;
 
 	while (!WindowShouldClose()) {
-		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+		if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
 			cursor_position = GetMousePosition();
 			position_x = cursor_position.x / cell_width; 
 			position_y = cursor_position.y / cell_height; 
 			generation[position_x][position_y] = 1;
 		}
-		else if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
+		else if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT)) {
 			cursor_position = GetMousePosition();
 			position_x = cursor_position.x / cell_width; 
 			position_y = cursor_position.y / cell_height; 
